@@ -1,23 +1,37 @@
 
 #!/bin/bash
 
+
+# A lancer avec source dep_install.sh
+# Si vous avez déjà un env virtuel, il ne sera pas réinstallé
+# Si vous voulez réinstaller l'env virtuel, supprimez le dossier centrale_p
+
 if [ -d $PWD/centrale_p ]; then
 	echo "centrale_p already exists"
-	exit 1
 else
 	sudo pip3.11 install python3.11-dev python3.11-venv
 	python3.11 -m venv $PWD/centrale_p
-fi
-
-source centrale_p/bin/activate
-pip3.11 install pandas \
+	pip3.11 install pandas \
 				numpy \
 				scikit-learn \
-				pyspark \
+				openpyxl \
+				plotlib \
 				matplotlib \
 				jupyter
-# mettez les librairie que vous voulez installer les potos
-ipython kernel install --user --name=centrale_p
+	# mettez les librairie que vous voulez installer les potos
+	source $PWD/centrale_p/bin/activate
+	ipython kernel install --user --name=centrale_p
+	exit 0
+fi
+source $PWD/centrale_p/bin/activate
+pip3.11 install pandas \
+				openpyxl \
+				numpy \
+				scikit-learn \
+				plotly \
+				matplotlib \
+				jupyter
+
 
 # Pour activer l'env virtuel : source centrale_p/bin/activate
 # Pour désactiver l'env virtuel : deactivate
