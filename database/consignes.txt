@@ -1,0 +1,5 @@
+Copier coller la db du prof dans ce répertoire
+
+!!!! Renommez la en db_urg.xlsx !!!!
+
+J'ai mis un .gitignore pour que personne ne la push sur le repo
