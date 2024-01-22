@@ -9,7 +9,7 @@
 if [ -d $PWD/centrale_p ]; then
 	echo "centrale_p already exists"
 else
-	sudo pip3.11 install python3.11-dev python3.11-venv
+	sudo pip install python3.11-dev python3.11-venv
 	python3.11 -m venv $PWD/centrale_p
 	pip3.11 install pandas \
 				numpy \
@@ -24,7 +24,7 @@ else
 	exit 0
 fi
 source $PWD/centrale_p/bin/activate
-pip3.11 install pandas \
+pip install pandas \
 				openpyxl \
 				numpy \
 				scikit-learn \
