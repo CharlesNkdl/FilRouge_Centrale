@@ -2,6 +2,7 @@ import re
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from category_encoders import OneHotEncoder
 
 def parser_date_hum(valeur):
     formats = ['%d/%m/%Y %H:%M', '%d/%m/%y %H:%M']
@@ -91,9 +92,17 @@ def dummies_encode(dfp, categories):
     return dfp
 
 def lstenc(dfp):
-	listcat = ["conduite","have_bio","have_radio","have_echo","have_scan","have_specia", "have_irm","intitule_diag"]
+	listcat = ["conduite","m_venue","have_bio","have_radio","have_echo","have_scan","have_specia", "have_irm","intitule_diag", "cac_admi","cac_sejour","destination","cp_ville"]
 	dfp = dummies_encode(dfp, listcat)
 	return dfp
+
+
+def lstencore(dfp):
+    listcat = ["conduite","m_venue","have_bio","have_radio","have_echo","have_scan","have_specia", "have_irm","intitule_diag", "cac_admi","cac_sejour","destination","cp_ville"]
+    encoder = OneHotEncoder(cols = listcat)
+    dfp = encoder.fit_transform(dfp)
+    return dfp
+
 
 def lstdate(dfp):
 	trslt = ["date_urg","date_box","date_prescri_bio","date_prelev_bio","date_sortie","date_deb_pec_med"]
