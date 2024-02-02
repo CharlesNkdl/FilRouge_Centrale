@@ -140,3 +140,40 @@ def pipelinett(dfp):
       dfp["destination"] = dfp["destination"].apply(ttt_destination)
       dfp = separer_pression_sanguine(dfp, "cst_paspad")
       return dfp
+
+def pipeline_t_by_p(dfp):
+    dfp = lstdate(dfp)
+    dfp = dfp.drop(["m_entry",
+                    "atcd_med",
+					"atcd_chir",
+					"cst_paspad",
+					"fc_ad",
+					"tmp_ad",
+					"saoxy_ad",
+					"fr_ad",
+                    "salle",
+					"date_box",
+					"anamn",
+					"obs",
+					"have_bio",
+					"have_radio",
+					"have_echo",
+					"have_scan",
+					"have_irm",
+					"have_specia",
+					"date_prescri_bio",
+					"date_prelev_bio",
+					"code_diag",
+					"intitule_diag",
+					"cac_admi",
+					"cac_sejour",
+					"date_deb_pec_med",
+					"dossier_hopit",
+					"type_orient",
+					"destination",
+					"transfert_service",
+					"transfert_hopit",
+					"cp_ville",
+					"ville"], axis = 1)
+    return dfp
+
